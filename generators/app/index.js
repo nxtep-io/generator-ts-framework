@@ -117,6 +117,15 @@ module.exports = class extends Generator {
       this.templatePath('**/*.ts'),
       this.destinationRoot()
     );
+
+    // VSCode config files
+    this.fs.copyTpl(
+      this.templatePath('.vscode/*.json'),
+      this.destinationPath('.vscode'),
+      null, {
+        dot: true
+      }
+    );
   }
 
   install() {

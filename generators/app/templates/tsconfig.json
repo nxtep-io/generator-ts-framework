@@ -17,8 +17,8 @@
     ]
   },
   "include": [
-    "./api",
-    "./start.ts",
+    "./api/**/*",
+    "./config/**/*",
   ],
   "exclude": [
     "./dist",
