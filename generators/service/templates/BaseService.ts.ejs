@@ -1,0 +1,46 @@
+import { BaseError, Service, ServiceOptions } from 'ts-framework-common';
+
+export interface <%= serviceName %>Options extends ServiceOptions {
+}
+
+export default class <%= serviceName %> extends Service {
+  protected static instance: <%= serviceName %>;
+  public options: <%= serviceName %>Options;
+
+  constructor(options: <%= serviceName %>Options) {
+    super(options);
+  }
+
+  public static getInstance(options: <%= serviceName %>Options) {
+    if (!this.instance) {
+      throw new BaseError("<%= name %> service is invalid or hasn't been initialized yet");
+    }
+    return this.instance;
+  }
+
+  public static initialize(options: <%= serviceName %>Options) {
+    const service = new <%= serviceName %>(options);
+
+    if(!this.instance) {
+      this.instance = service;
+    }
+
+    return service;
+  }
+  
+  async onMount(): Promise<void> {
+    this.logger.debug('Mounting <%= serviceName %> instance');
+  }
+
+  async onInit(): Promise<void> {
+    this.logger.debug('Initializing <%= serviceName %> instance');
+  }
+
+  async onReady(): Promise<void> {
+    this.logger.info('<%= serviceName %> initialized successfully');
+  }
+
+  async onUnmount(): Promise<void> {
+    this.logger.debug('Unmounting <%= serviceName %> instance');
+  }
+}
