@@ -118,12 +118,6 @@ module.exports = class extends Generator {
       this.destinationRoot()
     );
 
-    // Copy .gitkeep files
-    this.fs.copyTpl(
-      this.templatePath('**/*.gitkeep'),
-      this.destinationRoot()
-    );
-
     // VSCode config files
     this.fs.copyTpl(
       this.templatePath('.vscode/*.json'),
