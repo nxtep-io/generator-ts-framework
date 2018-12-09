@@ -1,0 +1,15 @@
+import { Controller, Get, BaseRequest, BaseResponse, HttpError, HttpCode } from 'ts-framework';
+
+@Controller('<%= basePath %>')
+export default class <%= ctrlName %> {
+
+  /**
+   * GET /status
+   * 
+   * @description Displays the server current information, such as version, env and uptime.
+   */
+  @Get('/')
+  static async sample(req: BaseRequest, res: BaseResponse) {
+    throw new HttpError('Method not implemented yet', HttpCode.Server.INTERNAL_SERVER_ERROR);
+  }
+}

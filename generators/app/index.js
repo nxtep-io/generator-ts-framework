@@ -1,9 +1,6 @@
-'use strict';
 const Generator = require('yeoman-generator');
 const slugify = require('underscore.string/slugify');
 const chalk = require('chalk');
-const mkdirp = require('mkdirp');
-const path = require('path');
 const yosay = require('yosay');
 
 module.exports = class extends Generator {
