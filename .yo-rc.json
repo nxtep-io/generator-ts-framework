@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Luis Brito",
+      "authorEmail": "luis@nxtep.io",
+      "authorUrl": "https://github.com/nxtep-io"
+    }
+  }
+}
