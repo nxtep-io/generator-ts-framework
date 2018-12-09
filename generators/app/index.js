@@ -11,7 +11,10 @@ module.exports = class extends Generator {
     super(args, opts);
 
     // This makes `appname` an optional argument.
-    this.argument('appname', { type: String, required: false });
+    this.argument('appname', {
+      type: String,
+      required: false
+    });
 
     // add option to skip install
     this.option('skip-install');
@@ -126,15 +129,22 @@ module.exports = class extends Generator {
         bower: false,
         yarn: true,
       }).then(() => {
-        // Build typescript files
-        this.spawnCommandSync('yarn', ['build'])
+        if (!this.options['skip-install']) {
+          // Build typescript files
+          this.spawnCommandSync('yarn', ['build'])
 
-        // Run automated tests to ensure everything went well
-        this.spawnCommandSync('yarn', ['test'])
+          // Run automated tests to ensure everything went well
+          this.spawnCommandSync('yarn', ['test'])
 
-        // Log completion
-        
-      })
+          // Log completion
+          this.log('\n\n--\n');
+          this.log('Project generated successfully, all unit tests passing');
+          this.log('You can start the server with: cd ./example && yarn start');
+        }
+      });
+    } else {
+      this.log('\n\n--\n');
+      this.log('Project generated successfully');
     }
   }
 };
