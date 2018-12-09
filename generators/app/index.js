@@ -88,6 +88,11 @@ module.exports = class extends Generator {
     );
 
     // Prepare dot configuration files
+    this.fs.copyTpl(this.templatePath('_gitignore'), this.destinationPath('.gitignore'), null, {
+      globOptions: {
+        dot: true
+      }
+    });
     this.fs.copyTpl(this.templatePath('.*'), this.destinationRoot(), null, {
       globOptions: {
         dot: true
