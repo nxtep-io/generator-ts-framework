@@ -25,13 +25,13 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const serviceName = `${toPascalCase(this.options.name)}Service`;
+    const jobName = `${toPascalCase(this.options.name)}Job`;
 
     // Copy Docker files
     this.fs.copyTpl(
-      this.templatePath('BaseService.ts.ejs'),
-      this.destinationPath(`./api/services/${serviceName}.ts`), {
-        serviceName,
+      this.templatePath('BaseJob.ts.ejs'),
+      this.destinationPath(`./api/jobs/${jobName}.ts`), {
+        jobName,
         name: this.options.name,
       }, {
         globOptions: {
@@ -43,6 +43,6 @@ module.exports = class extends Generator {
 
   install() {
     this.log('\n\n--\n');
-    this.log('Controller generated successfully');
+    this.log('Job generated successfully');
   }
 };

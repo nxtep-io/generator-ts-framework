@@ -1,6 +1,4 @@
 'use strict';
-const chalk = require('chalk');
-const yosay = require('yosay');
 const Generator = require('yeoman-generator');
 const slugify = require('underscore.string/slugify');
 
@@ -24,7 +22,6 @@ module.exports = class extends Generator {
 
     // Prepare context utils
     this.slugify = slugify;
-    this.camel = toPascalCase;
   }
 
   prompting() {

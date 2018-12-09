@@ -1,0 +1,18 @@
+import { BaseError, Job, JobOptions } from "ts-framework-common";
+import MainServer from '../server';
+
+export interface <%= jobName %>Options extends JobOptions {
+}
+
+export default class <%= jobName %> extends Job {
+  protected static instance: <%= jobName %>;
+  public options: <%= jobName %>Options;
+
+  constructor(options: <%= jobName %>Options) {
+    super(options);
+  }
+
+  public async run(server: MainServer): Promise<void> {
+    throw new BaseError('<%= jobName %> not implemented yet');
+  }
+}
