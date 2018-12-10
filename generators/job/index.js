@@ -1,14 +1,12 @@
 'use strict';
+const Path = require('path');
 const Generator = require('yeoman-generator');
 const slugify = require('underscore.string/slugify');
+const {
+  toPascalCase
+} = require('../utils');
 
-const toPascalCase = (input) => {
-  return input.match(/[a-z]+/gi)
-    .map(function (word) {
-      return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
-    })
-    .join('');
-}
+const BASE_PATH = './api/jobs';
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -18,6 +16,15 @@ module.exports = class extends Generator {
     this.argument('name', {
       type: String,
       required: true,
+      description: 'The name of the entity'
+    });
+
+    // Adds support for custom path
+    this.option('path', {
+      type: String,
+      required: false,
+      default: BASE_PATH,
+      description: 'Specify a custom path for script generation'
     });
 
     // Prepare context utils
@@ -27,12 +34,12 @@ module.exports = class extends Generator {
   writing() {
     const jobName = `${toPascalCase(this.options.name)}Job`;
 
-    // Copy Docker files
     this.fs.copyTpl(
       this.templatePath('BaseJob.ts.ejs'),
-      this.destinationPath(`./api/jobs/${jobName}.ts`), {
-        jobName,
-        name: this.options.name,
+      this.destinationPath(
+        Path.resolve(process.cwd(), this.options.path, `${jobName}.ts`)
+      ), {
+        jobName
       }, {
         globOptions: {
           extension: false,
@@ -42,7 +49,7 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.log('\n\n--\n');
+    this.log('\n--\n');
     this.log('Job generated successfully');
   }
 };

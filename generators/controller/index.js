@@ -2,16 +2,9 @@
 const Path = require('path');
 const Generator = require('yeoman-generator');
 const slugify = require('underscore.string/slugify');
+const {toPascalCase} = require('../utils');
 
 const BASE_PATH = './api/controllers';
-
-const toPascalCase = (input) => {
-  return input.match(/[a-z]+/gi)
-    .map(function (word) {
-      return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
-    })
-    .join('');
-}
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -32,7 +25,7 @@ module.exports = class extends Generator {
       description: 'Specify a custom path for script generation'
     });
 
-    // Adds support for custom path
+    // Adds support for custom base URL
     this.option('base-url', {
       type: String,
       required: false,
@@ -62,7 +55,7 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.log('\n\n--\n');
-    this.log('Controller generated successfully');
+    this.log('\n--\n');
+    this.log('Controlller generated successfully');
   }
 };

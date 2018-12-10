@@ -5,7 +5,6 @@ export interface <%= jobName %>Options extends JobOptions {
 }
 
 export default class <%= jobName %> extends Job {
-  protected static instance: <%= jobName %>;
   public options: <%= jobName %>Options;
 
   constructor(options: <%= jobName %>Options) {

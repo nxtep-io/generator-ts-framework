@@ -1,14 +1,12 @@
 'use strict';
+const Path = require('path');
 const Generator = require('yeoman-generator');
 const slugify = require('underscore.string/slugify');
+const {
+  toPascalCase
+} = require('../utils');
 
-const toPascalCase = (input) => {
-  return input.match(/[a-z]+/gi)
-    .map(function (word) {
-      return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
-    })
-    .join('');
-}
+const BASE_PATH = './api/services';
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -18,6 +16,15 @@ module.exports = class extends Generator {
     this.argument('name', {
       type: String,
       required: true,
+      description: 'The name of the entity'
+    });
+
+    // Adds support for custom path
+    this.option('path', {
+      type: String,
+      required: false,
+      default: BASE_PATH,
+      description: 'Specify a custom path for script generation'
     });
 
     // Prepare context utils
@@ -27,10 +34,11 @@ module.exports = class extends Generator {
   writing() {
     const serviceName = `${toPascalCase(this.options.name)}Service`;
 
-    // Copy Docker files
     this.fs.copyTpl(
       this.templatePath('BaseService.ts.ejs'),
-      this.destinationPath(`./api/services/${serviceName}.ts`), {
+      this.destinationPath(
+        Path.resolve(process.cwd(), this.options.path, `${serviceName}.ts`)
+      ), {
         serviceName,
         name: this.options.name,
       }, {
@@ -42,7 +50,7 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.log('\n\n--\n');
-    this.log('Controller generated successfully');
+    this.log('\n--\n');
+    this.log('Service generated successfully');
   }
 };
