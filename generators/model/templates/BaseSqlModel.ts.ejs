@@ -1,0 +1,24 @@
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity(<%= modelName %>.tableName)
+export default class <%= modelName %> {
+  private static readonly tableName = '<%= pluralize(name) %>';
+
+  @PrimaryGeneratedColumn('uuid')
+  public id: string;
+
+  @Column({ nullable: false })
+  public name: string;
+
+  public constructor(data: Partial<<%= modelName %>> = {}) {
+    this.id = data.id;
+    this.name = data.name;
+  }
+
+  /**
+   * Finds <%= name %> based on its name.
+   */ 
+  public static async findByName(name: string): Promise<<%= modelName %> | undefined> {
+    return this.findOne({ where: {name} });
+  }
+}
