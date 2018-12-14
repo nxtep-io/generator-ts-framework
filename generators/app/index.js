@@ -136,9 +136,6 @@ module.exports = class extends Generator {
         yarn: true,
       }).then(() => {
         if (!this.options['skip-install']) {
-          // Build typescript files
-          this.spawnCommandSync('yarn', ['build'])
-
           // Run automated tests to ensure everything went well
           this.spawnCommandSync('yarn', ['test'])
 

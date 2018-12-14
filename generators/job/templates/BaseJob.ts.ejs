@@ -11,6 +11,11 @@ export default class <%= jobName %> extends Job {
     super(options);
   }
 
+  /**
+   * Runs a routine in the background of the server after its initialization.
+   * 
+   * @param server The initialized server instance
+   */
   public async run(server: MainServer): Promise<void> {
     throw new BaseError('<%= jobName %> not implemented yet');
   }

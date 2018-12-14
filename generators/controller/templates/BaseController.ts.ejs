@@ -4,9 +4,9 @@ import { Controller, Get, BaseRequest, BaseResponse, HttpError, HttpCode } from 
 export default class <%= ctrlName %> {
 
   /**
-   * GET /status
+   * GET /
    * 
-   * @description Displays the server current information, such as version, env and uptime.
+   * @description A sample controller.
    */
   @Get('/')
   static async sample(req: BaseRequest, res: BaseResponse) {
