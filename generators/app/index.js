@@ -142,7 +142,7 @@ module.exports = class extends Generator {
           // Log completion
           this.log('\n\n--\n');
           this.log('Project generated successfully, all unit tests passing');
-          this.log('You can start the server with: cd ./example && yarn start');
+          this.log(`You can start the server with: cd ./${this.options.dirname || 'example'} && yarn start`);
         }
       });
     } else {
