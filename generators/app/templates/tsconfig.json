@@ -18,7 +18,7 @@
   },
   "include": [
     "./api/**/*",
-    "./config/**/*",
+    "./config/**/*"
   ],
   "exclude": [
     "./dist",
