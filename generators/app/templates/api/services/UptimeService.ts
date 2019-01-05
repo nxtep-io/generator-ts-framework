@@ -42,7 +42,10 @@ export default class UptimeService extends Service {
     this.history.ready = Date.now();
   }
 
-  uptime() {
+  /**
+   * Gets current uptime in ms.
+   */
+  public uptime(): number {
     if (this.history.ready) {
       return Math.max(1, Date.now() - this.history.ready);
     }

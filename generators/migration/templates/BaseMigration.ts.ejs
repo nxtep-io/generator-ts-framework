@@ -1,0 +1,11 @@
+import { MigrationInterface, QueryRunner } from "typeorm";
+
+export class <%= fullName %> implements MigrationInterface {
+  public async up(queryRunner: QueryRunner): Promise<any> {
+    // Your up migrations
+  };
+
+  public async down(queryRunner: QueryRunner): Promise<any> {
+    // Your down migrations
+  };
+}

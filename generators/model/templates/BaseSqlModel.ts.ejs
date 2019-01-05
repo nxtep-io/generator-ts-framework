@@ -1,7 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity(<%= modelName %>.tableName)
-export default class <%= modelName %> {
+export default class <%= modelName %> extends BaseEntity {
   private static readonly tableName = '<%= pluralize(name) %>';
 
   @PrimaryGeneratedColumn('uuid')
@@ -11,6 +11,7 @@ export default class <%= modelName %> {
   public name: string;
 
   public constructor(data: Partial<<%= modelName %>> = {}) {
+    super(data);
     this.id = data.id;
     this.name = data.name;
   }

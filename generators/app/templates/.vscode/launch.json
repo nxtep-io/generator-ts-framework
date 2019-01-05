@@ -6,24 +6,27 @@
   "configurations": [
     {
       "type": "node",
+      "request": "attach",
+      "name": "Attach",
+      "port": 9229,
+    },
+    {
+      "name": "Watch",
+      "type": "node",
       "request": "launch",
-      "name": "start (ts-node/local)",
       "cwd": "${workspaceRoot}",
-      "runtimeExecutable": "node",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-framework",
+      "port": 9229,
+      "restart": true,
       "runtimeArgs": [
-        "-r",
-        "ts-node/register",
+        "watch",
+        "--inspect=9229"
       ],
-      "args": [
-        "${workspaceFolder}/start.ts"
-      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
       "env": {
         "NODE_ENV": "development",
-        "PORT": "3000"
-      },
-      "sourceMaps": true,
-      "internalConsoleOptions": "openOnFirstSessionStart",
-      "console": "integratedTerminal"
+      }
     },
     {
       "name": "Debug Jest Tests",
