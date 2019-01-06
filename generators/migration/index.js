@@ -52,7 +52,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('BaseMigration.ts.ejs'),
       this.destinationPath(
-        Path.resolve(process.cwd(), this.options.path, `${fullName}.ts`)
+        Path.resolve(process.cwd(), this.options.path, `${timestamp}-${toPascalCase(this.options.name)}.ts`)
       ), {
         fullName,
         name: this.options.name,
