@@ -28,6 +28,18 @@ module.exports = class extends Generator {
       description: 'Specify a custom path for script generation'
     });
 
+    this.option('up', {
+      type: String,
+      required: false,
+      description: 'Specify the up statements for migration'
+    });
+
+    this.option('down', {
+      type: String,
+      required: false,
+      description: 'Specify the down statements for migration'
+    });
+
     // Prepare context utils
     this.slugify = slugify;
     this.pluralize = pluralize;
@@ -45,6 +57,8 @@ module.exports = class extends Generator {
         fullName,
         name: this.options.name,
         slugify: this.slugify,
+        upBody: this.options.up || "// Your up migrations",
+        downBody: this.options.down || "// Your down migrations",
       }, {
         globOptions: {
           extension: false,
