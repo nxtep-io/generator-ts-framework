@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, DeepPartial, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity(<%= modelName %>.tableName)
 export default class <%= modelName %> extends BaseEntity {
@@ -10,7 +10,7 @@ export default class <%= modelName %> extends BaseEntity {
   @Column({ nullable: false })
   public name: string;
 
-  public constructor(data: Partial<<%= modelName %>> = {}) {
+  public constructor(data: DeepPartial<<%= modelName %>> = {}) {
     super(data);
     this.id = data.id;
     this.name = data.name;
