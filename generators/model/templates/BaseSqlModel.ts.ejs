@@ -2,7 +2,7 @@ import { BaseEntity, Column, DeepPartial, Entity, PrimaryGeneratedColumn } from 
 
 @Entity(<%= modelName %>.tableName)
 export default class <%= modelName %> extends BaseEntity {
-  private static readonly tableName = '<%= pluralize(name) %>';
+  private static readonly tableName = '<%= pluralize(name).toLowerCase() %>';
 
   @PrimaryGeneratedColumn('uuid')
   public id: string;
@@ -11,7 +11,7 @@ export default class <%= modelName %> extends BaseEntity {
   public name: string;
 
   public constructor(data: DeepPartial<<%= modelName %>> = {}) {
-    super(data);
+    super();
     this.id = data.id;
     this.name = data.name;
   }

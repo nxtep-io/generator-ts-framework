@@ -34,7 +34,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const modelName = `${toPascalCase(this.options.name)}Model`;
+    const modelName = `${toPascalCase(this.options.name)}`;
 
     this.fs.copyTpl(
       this.templatePath('BaseSqlModel.ts.ejs'),
