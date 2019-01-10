@@ -1,6 +1,6 @@
 {
   "name": "generator-ts-framework",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A generator for TS Framework projects based on Yeoman",
   "homepage": "https://nxtep-io.github.io/ts-framework",
   "author": {

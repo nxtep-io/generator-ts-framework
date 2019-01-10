@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "pjson": "^1.0.9",
-    "ts-framework": "nxtep-io/ts-framework#v2.3",
+    "ts-framework": "nxtep-io/ts-framework#v2.4",
+    "ts-framework-cli": "nxtep-io/ts-framework-cli#v2.4",
     "ts-framework-common": "nxtep-io/ts-framework-common#2.3.1",
     "ts-node": "^7.0.1"
   },
